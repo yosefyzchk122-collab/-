@@ -7,7 +7,7 @@
 <title>זה המשיח | Это Мошиах</title>
 <style>
 :root{--y:#f5c400;--r:#a90d0d;--wine:#4b0829;--ink:#151515;--cream:#fffaf2;--line:#e8e1d4;--shadow:0 18px 42px rgba(37,25,0,.08);--navy:#161616;--muted:#6b675f}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Arial,"Noto Sans Hebrew",sans-serif;color:var(--ink);line-height:1.68;background:#fff}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:"Rubik","Noto Sans Hebrew",Arial,sans-serif;color:var(--ink);line-height:1.68;background:#fff}
 .top{position:sticky;top:0;z-index:70;background:rgba(255,255,255,.96);backdrop-filter:blur(16px);border-bottom:1px solid #ebe7de;box-shadow:0 3px 18px rgba(0,0,0,.03)}
 .topin{max-width:1240px;margin:auto;min-height:64px;padding:7px 15px;display:flex;align-items:center;gap:14px}
 .logoTop{height:48px;max-width:150px;object-fit:contain}.nav{flex:1;display:flex;gap:15px;justify-content:center;overflow:auto;scrollbar-width:none}
@@ -68,6 +68,17 @@ details[open] .chev{transform:rotate(45deg)}
 .legal{background:#0d0709!important;color:#cfc4c8!important}
 @media(max-width:900px){.articleFlow{padding:7px 22px}.articleBlock{padding:22px 0}.articleBlock h3{font-size:23px}.contactTagline{margin-left:auto;margin-right:auto}}
 
+
+html[lang="he"] h2,html[lang="he"] h3,html[lang="he"] summary,html[lang="he"] .nav a{
+ font-family:"Rubik","Noto Sans Hebrew",Arial,sans-serif!important;font-weight:900!important;letter-spacing:-.75px
+}
+html[lang="ru"] h2,html[lang="ru"] h3,html[lang="ru"] summary{
+ font-weight:750!important;letter-spacing:-.45px
+}
+.redemptionIntro{margin-top:34px;padding:34px 38px;border-radius:24px;background:#25151a;color:#fff;box-shadow:0 18px 42px rgba(45,18,27,.15)}
+.redemptionIntro h3{margin:0 0 13px;color:#f5ca16;font-size:30px;line-height:1.2}
+.redemptionIntro p{margin:0;font-size:19px;line-height:1.85;white-space:pre-line}
+@media(max-width:700px){.redemptionIntro{padding:26px 23px}.redemptionIntro h3{font-size:27px}}
 </style>
 </head>
 <body>
@@ -75,9 +86,10 @@ details[open] .chev{transform:rotate(45deg)}
 <section class="hero"><img id="heroImg" alt=""></section>
 
 <section class="section" id="why">
-<div class="eyebrow">אז למה בכלל חב״ד אומרת את זה?</div>
+<div class="eyebrow">אז למה בכלל בחב״ד אומרים את זה?</div>
 <h2 id="whyTitle"></h2>
 <div class="whyHero"><h3 id="whyLeadTitle"></h3><p class="lead" id="whyLead"></p></div>
+<div class="redemptionIntro"><h3 id="redemptionTitle"></h3><p id="redemptionText"></p></div>
 <div class="articleFlow" id="whyReader"></div>
 </section><section class="section" id="rambam"><div class="eyebrow">RAMBAM · HILCHOT MELACHIM 11:4</div><h2 id="rtitle"></h2><p class="lead" id="rintro"></p><div class="quote" id="rambamQuote"></div><div class="acc" id="signs"></div></section>
 
@@ -114,7 +126,7 @@ DATA.he.contactTitle="בית חב״ד לעולים — לדוברי רוסית �
 DATA.ru.contactTitle="Бейт Хабад для репатриантов — русскоязычная община Хайфы"; DATA.ru.nav=["Почему Хабад говорит: Мошиах?","Признаки Рамбама","Мошиах несомненно","Жив и существует","Пророк поколения","Постановление","Принятие царства","Вопросы"];
 DATA.he.footer="יחי אדונינו מורינו ורבינו מלך המשיח לעולם ועד."; DATA.he.rambamQuote="«ואם יעמוד מלך מבית דוד הוגה בתורה ועוסק במצוות כדוד אביו… ויכוף כל ישראל לילך בה ולחזק בדקה, וילחם מלחמות ה׳ — הרי זה בחזקת שהוא משיח…»";
 DATA.ru.rambamQuote="«Если встанет царь из дома Давида, изучающий Тору и исполняющий заповеди, как Давид, его предок… побуждающий весь Израиль идти путём Торы и укреплять её установления, и ведущий войны Всевышнего, — он считается предполагаемым Мошиахом…»";
-DATA.he.whyTitle="חב״ד אומרים שהרבי מליובאוויטש הוא מלך המשיח — למה?";
+DATA.he.whyTitle="חב״ד אומרים שהרבי מלך המשיח שיחי׳ לעולם ועד הוא מלך המשיח — למה?";
 DATA.he.whyLeadTitle="לא סיסמה — שאלה הלכתית";
 DATA.he.whyLead="הרמב״ם לא משאיר את זה בתחום של כריזמה, ניסים או ניחושים. הוא נותן מסלול: מי יכול להיות בחזקת משיח, ומה צריך לקרות כדי להגיע למשיח ודאי. כאן עוברים על המסלול הזה בשפה ברורה: מה הרמב״ם דורש, מה הרבי הסביר על כל שלב, ולמה חסידי חב״ד מזהים את הסימנים האלה ברבי.";
 DATA.he.whyReader=[
@@ -122,7 +134,7 @@ DATA.he.whyReader=[
 ["למה אפשר לזהות משיח עוד בגלות?","הרמב״ם מגדיר שלב של „בחזקת שהוא משיח”. זה בדיוק נועד כדי לזהות את מנהיג הגאולה עוד לפני שהגאולה הושלמה. לפי הביאור בחוברת, משיח מתחיל לפעול בזמן הגלות: הוא כבר מנהיג, מלמד תורה, מחזק מצוות ונלחם על האפשרות של ישראל לחיות על פי התורה."],
 ["למה זה אמור לעניין אותי?","כי האמונה במשיח אינה נושא צדדי. היא נכנסת לתפילה, לברכת המזון, לציפייה היומיומית ולשאלה „ציפית לישועה?”. אם אנחנו באמת חיים בדור הגאולה, השאלה היא לא רק „מי המשיח?”, אלא גם „מה אני עושה כדי שהגאולה תהיה מציאות בחיים שלי ובסביבה שלי?”"]
 ];
-DATA.ru.whyTitle="Хабад говорит, что Любавичский Ребе — Король Мошиах. Почему?";
+DATA.ru.whyTitle="Хабад говорит, что Ребе Король Мошиах, да живёт он во веки веков — Король Мошиах. Почему?";
 DATA.ru.whyLeadTitle="Не лозунг, а галахический вопрос";
 DATA.ru.whyLead="Рамбам не оставляет тему Мошиаха на уровне харизмы, чудес или догадок. Он даёт последовательные критерии: кто может считаться предполагаемым Мошиахом и какие результаты определяют Мошиаха с уверенностью. Здесь каждый этап объясняется простым языком, но с источниками и логикой Торы.";
 DATA.ru.whyReader=[
@@ -198,7 +210,7 @@ DATA.he.acceptText=`היות וכל אחד ואחת מאיתנו רוצה להב
 הכרז בכוונה:
 יחי אדונינו מורינו ורבינו מלך המשיח לעולם ועד.`;
 DATA.he.acceptExplain="הנוסח שלפניכם מבוסס על טופס קבלת המלכות המקורי. הרעיון הוא שקבלת המלכות איננה רק חתימה או סיסמה, אלא החלטה מודעת לקבל את מלכותו של מלך המשיח, להתקשר אליו ולקיים את הוראותיו.";
-DATA.he.namesOptional="כתיבת שמות אינה חובה. מי שמעוניין יכול להשאיר שם ושם האם כדי לצרפם לרשימת שמות לברכה אצל הרבי מליובאוויטש.";
+DATA.he.namesOptional="כתיבת שמות אינה חובה. מי שמעוניין יכול להשאיר שם ושם האם כדי לצרפם לרשימת שמות לברכה אצל הרבי מלך המשיח שיחי׳ לעולם ועד.";
 DATA.ru.acceptTitle="ПРИНЯТИЕ ЦАРСКОЙ ВЛАСТИ";
 DATA.ru.acceptText=`Поскольку каждый из нас хочет приблизить скорое Избавление, мы поступаем по примеру старейшин Израиля во время воцарения Давида: они приняли на себя его руководство, подчинились его указаниям и тем самым придали дополнительную силу его царскому статусу.
 
@@ -266,9 +278,49 @@ DATA.he.contactTagline="הכתובת שלכם לכל עניין יהודי — �
 DATA.ru.contactTitle="Бейт Хабад бе-Алия — Хайфа";
 DATA.ru.contactTagline="Ваш адрес по любому еврейскому вопросу — вопрос, просьба, совет, благословение или помощь. Мы рядом.";
 
+
+DATA.he.whyTitle="בחב״ד אומרים שהרבי מלך המשיח שיחי׳ לעולם ועד הוא מלך המשיח — למה?";
+DATA.he.whyLeadTitle="לא סיסמה — שאלה הלכתית";
+DATA.he.whyLead="הרמב״ם לא משאיר את נושא המשיח בתחום של כריזמה, ניסים או ניחושים. הוא נותן מסלול הלכתי מסודר: מה בכלל אמור מלך המשיח לעשות, מי יכול להיות בחזקת משיח, ומה צריך לקרות כדי להגיע למשיח ודאי. כל אחד מהסימנים בודק האם האדם המסוים הזה מתאים לתפקיד.";
+
+DATA.he.redemptionTitle="לפני הכול: מהי בכלל הגאולה — ולמה שארצה שהיא תגיע?";
+DATA.he.redemptionText=`לפעמים אדם שומע „משיח” וחושב מיד: עוד תורה, עוד מצוות, אולי עולם שבו כל מה שאני אוהב ייעלם. אבל תיאור הגאולה בתורה הוא כמעט ההפך מהפחד הזה.
+
+הגאולה האמיתית והשלמה פירושה עולם מתוקן: מלחמות ורדיפות מפסיקות, הרע מאבד את כוחו, מחלות וסבל מתבטלים בשלמות הגאולה, עם ישראל חי בביטחון, והאנושות יכולה להפנות את הכוחות שלה לחיים, לחכמה, לטוב ולהכרת הבורא.
+
+בדבר מלכות אחרי־קדושים תנש״א הרבי מלך המשיח שיחי׳ לעולם ועד מתייחס בדיוק לחשש הזה: יש מי שחושש מביאת המשיח ושואל מה יהיה עם העסקים, הקשרים והתוכניות שבנה. הרבי מלך המשיח שיחי׳ לעולם ועד מסביר שהגאולה אינה מוחקת את הדברים הטובים של העולם. „גאולה” כוללת בתוכה את „גולה” — העולם עצמו נשאר, אבל האל״ף, גילוי אלופו של עולם, חודרת לתוכו. הטוב נשאר ומקבל את משמעותו השלמה; השעבוד, הרע וההסתר הם שמתבטלים.
+
+לכן הגאולה אינה טובה רק לאדם דתי. גם מי שעדיין רחוק מתורה ומצוות יכול לרצות עולם בלי מלחמות, בלי שנאה, בלי פחד ובלי סבל — עולם שבו הטוב שבחיים נשאר, אבל הוא נקי מן הרע שמקלקל אותו.`;
+
+DATA.ru.whyTitle="В Хабаде говорят, что Ребе Король Мошиах, да живёт он во веки веков, — это Король Мошиах. Почему?";
+DATA.ru.whyLeadTitle="Не лозунг, а галахический вопрос";
+DATA.ru.whyLead="Рамбам не оставляет тему Мошиаха на уровне харизмы, чудес или догадок. Он даёт чёткий путь: что вообще должен сделать Король Мошиах, кто может считаться предполагаемым Мошиахом и что должно произойти, чтобы перейти к статусу Мошиаха несомненно. Каждый критерий проверяет, соответствует ли конкретный человек этой задаче.";
+DATA.ru.redemptionTitle="Сначала главное: что такое Избавление — и почему я должен его хотеть?";
+DATA.ru.redemptionText=`Иногда слово «Мошиах» воспринимается как обещание мира, в котором исчезнет привычная жизнь и останутся только религиозные обязанности. Но Тора описывает Избавление совсем иначе.
+
+Истинное и полное Избавление — это исправленный мир: войны и преследования прекращаются, зло теряет власть, страдания и болезни исчезают в полноте Избавления, еврейский народ живёт в безопасности, а силы человечества направляются на жизнь, мудрость, добро и познание Творца.
+
+В Двар Малхут Ахарей–Кдошим 5751 Ребе Король Мошиах, да живёт он во веки веков, отвечает на страх: что будет с бизнесом, связями и планами, которые человек строил? Избавление не уничтожает хорошее. Само слово «геула» включает «гола» — изгнание — с добавлением буквы алеф, раскрывающей Владыку мира. Хорошее остаётся и раскрывает свой настоящий смысл; исчезают зло, порабощение и сокрытие.
+
+Поэтому Избавление нужно не только религиозному человеку. Мир без войн, ненависти, страха и страданий — при сохранении всего настоящего добра жизни — желателен для каждого.`;
+
+DATA.he.whyReader=[
+["מה בכלל אמור מלך המשיח לעשות?","לפי הרמב״ם, מלך המשיח צריך להחזיר את מלכות בית דוד, להביא את עם ישראל לשלמות של תורה ומצוות, לבנות את בית המקדש, לקבץ את נדחי ישראל ולהוביל את העולם להכרה בבורא. הסימנים שהרמב״ם נותן אינם רשימת שבחים כללית; כל אחד מהם בודק האם האדם המסוים הזה מתאים לתפקיד, והאם הוא אכן מתקדם במסלול שההלכה מגדירה למלך המשיח."],
+["למה אפשר לזהות משיח עוד בזמן הגלות?","הרמב״ם עצמו מגדיר שלב של „בחזקת שהוא משיח”. כלומר, עוד לפני השלמת הגאולה יש קריטריונים שמאפשרים לבחון אדם מסוים: ייחוסו, הנהגתו בתורה ובמצוות, השפעתו על כלל ישראל ומלחמות ה׳. לאחר מכן בא שלב התוצאות — „משיח ודאי”."],
+["אז מה האתר הזה מנסה לעשות?","לא לבקש מהקורא להתחיל מסיסמה, אלא לעבור שלב־שלב: קודם להבין מהי הגאולה ומהו תפקיד המשיח, אחר כך לקרוא את לשון הרמב״ם, ואז לבדוק כיצד בחב״ד מסבירים שכל אחד מהסימנים מתקיים ברבי מלך המשיח שיחי׳ לעולם ועד."]
+];
+DATA.ru.whyReader=[
+["Что вообще должен сделать Король Мошиах?","По Рамбаму, Король Мошиах должен восстановить царство Давида, привести Израиль к полноте Торы и заповедей, построить Храм, собрать изгнанников и привести мир к познанию Творца. Критерии Рамбама — не список комплиментов: каждый из них проверяет, подходит ли конкретный человек для этой задачи."],
+["Почему Мошиаха можно распознать ещё в изгнании?","Сам Рамбам определяет стадию «в презумпции, что он Мошиах». Ещё до завершения Избавления можно проверить происхождение, руководство, Тору и заповеди, влияние на весь Израиль и «войны Всевышнего». Затем идёт стадия фактических результатов — «Мошиах несомненно»."],
+["Что делает этот сайт?","Он не просит начинать с лозунга. Сначала — понять, что такое Избавление и какова задача Мошиаха; затем — прочитать критерии Рамбама; и только после этого — увидеть, как в Хабаде объясняют их исполнение у Ребе Короля Мошиаха, да живёт он во веки веков."]
+];
+
+DATA.he.legal="כל הזכויות שמורות לבית חב״ד בעלייה חיפה • מצווה להעתיק, לשתף ולהפיץ את החומר והתוכן לזיכוי הרבים ולהפצת בשורת הגאולה — בעת העתקה או פרסום יש לתת קרדיט לאתר.";
+DATA.ru.legal="Все права принадлежат Бейт Хабад бе-Алия Хайфа • Материалы разрешается и приветствуется копировать, публиковать и распространять; при публикации необходимо указать источник — этот сайт.";
+
 const E=id=>document.getElementById(id);
 const el={
-nav:E('nav'),whyTitle:E('whyTitle'),whyLeadTitle:E('whyLeadTitle'),whyLead:E('whyLead'),whyReader:E('whyReader'),hero:E('heroImg'),flag:E('flagImg'),rtitle:E('rtitle'),rintro:E('rintro'),signs:E('signs'),
+nav:E('nav'),whyTitle:E('whyTitle'),whyLeadTitle:E('whyLeadTitle'),whyLead:E('whyLead'),redemptionTitle:E('redemptionTitle'),redemptionText:E('redemptionText'),whyReader:E('whyReader'),hero:E('heroImg'),flag:E('flagImg'),rtitle:E('rtitle'),rintro:E('rintro'),signs:E('signs'),
 ctitle:E('ctitle'),cintro:E('cintro'),certain:E('certainList'),lifeTitle:E('lifeTitle'),lifeIntro:E('lifeIntro'),life:E('lifeList'),
 prophetTitle:E('prophetTitle'),prophetIntro:E('prophetIntro'),prophet:E('prophetList'),psakTitle:E('psakTitle'),psakText:E('psakText'),
 zoom:E('zoomBtn'),openPdf:E('openPdf'),psak:E('psakImg'),modal:E('modal'),close:E('closeModal'),
@@ -286,10 +338,10 @@ function reader2(x,i){return `<article class="articleBlock"><h3>${x[0]}</h3><p>$
 function practicalCard(x){return `<article><b>${x[0]}. ${x[1]}</b><p>${x[2]}</p></article>`}
 function renderNames(){el.saved.innerHTML=names.length?names.map((n,i)=>`<div class="saved">${i+1}. ${n[0]} • ${n[1]}</div>`).join(''):'—'}
 function render(){
- const d=DATA[lang]; document.documentElement.lang=lang; document.documentElement.dir=d.dir; document.body.dir=d.dir;
+ const d=DATA[lang]; document.documentElement.lang=lang; document.documentElement.dir=d.dir; document.documentElement.lang=lang; document.body.dir=d.dir;
  document.querySelectorAll('.eyebrow').forEach(x=>x.style.display=(lang==='ru'?'none':'block'));
  el.he.classList.toggle('on',lang==='he'); el.ru.classList.toggle('on',lang==='ru');
- el.hero.src=d.hero; el.flag.src=d.flag; el.whyTitle.textContent=d.whyTitle; el.whyLeadTitle.textContent=d.whyLeadTitle; el.whyLead.textContent=d.whyLead; el.whyReader.innerHTML=d.whyReader.map(reader2).join('');
+ el.hero.src=d.hero; el.flag.src=d.flag; el.whyTitle.textContent=d.whyTitle; el.whyLeadTitle.textContent=d.whyLeadTitle; el.whyLead.textContent=d.whyLead; el.redemptionTitle.textContent=d.redemptionTitle; el.redemptionText.textContent=d.redemptionText; el.whyReader.innerHTML=d.whyReader.map(reader2).join('');
  const ids=['why','rambam','certainSection','lifeSection','prophetSection','psak','accept','faqSection'];
  el.nav.innerHTML=d.nav.map((x,i)=>`<a href="#${ids[i]}">${x}</a>`).join('');
  el.rtitle.textContent=d.rtitle; el.rintro.textContent=d.rintro; el.rambamQuote.textContent=d.rambamQuote; el.signs.innerHTML=d.signs.map(row4).join('');
